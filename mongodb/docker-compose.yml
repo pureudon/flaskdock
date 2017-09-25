@@ -1,0 +1,26 @@
+# docker run --rm -d -p 3306:3306 --name mongodock -u jsmith -p some-initial-password mongo::3.4.9
+# docker run --rm -p 3306:3306 --name mongodock -u jsmith -p some-initial-password mongo::3.4.9
+
+# docker run -it --rm --link some-mongo:mongo mongo mongo -u jsmith -p some-initial-password --authenticationDatabase admin some-mongo/some-db
+
+
+version: '3'
+
+services:
+
+  db:
+    container_name: mongodock
+    image: mongo:3.4.9
+    volumes:
+      - ./db_data/data/db/:/data/db
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+
+
+
+# docker-compose up -d
+# docker-compose down --volumes 

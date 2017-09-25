@@ -1,0 +1,11 @@
+*.pyc
+.idea/
+__pycache__/
+*.db
+.DS_Store
+venv/
+log/emperor.log
+log/uwsgi.log
+.vscode/
+src/__pycache__/*.pyc
+mongodb/db_data/*

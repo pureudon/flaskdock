@@ -1,0 +1,27 @@
+# build images
+
+version: '3'
+ 
+services:
+  web:
+    container_name: flaskweb
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_DEBUG=1
+    volumes:
+      - ./:/usr/src/app/web
+    command: flask run --host=0.0.0.0 --port 8000
+
+
+
+
+# cd projectfolder
+# ls
+# cat docker-compose.yml
+
+# docker-compose up -d
+# docker-compose down --volumes 
+
